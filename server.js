@@ -1,13 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const axios = require("axios");
-const cheerio = require("cheerio");
+// const axios = require("axios");
+// const cheerio = require("cheerio");
 
 // Port 
-let PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Require all models
-const db = require("./models");
+// const db = require("./models");
 
 // Initialize Express
 const app = express();
@@ -26,6 +26,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
 require("./routes/scrape-routes.js")(app);
+require("./routes/html-routes.js")(app);
 
 // Start the sever
 app.listen(PORT, function () {
