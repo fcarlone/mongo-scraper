@@ -13,7 +13,6 @@ const db = require("./models");
 const app = express();
 
 // Middleware
-
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -24,6 +23,9 @@ app.use(express.static("public"));
 // If deployed, use the deployed database. Otherwise use the local mongoScraper database
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
+// Routes
+require("./routes/scrape-routes.js")(app);
 
 // Start the sever
 app.listen(PORT, function () {
