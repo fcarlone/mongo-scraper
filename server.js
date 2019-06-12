@@ -7,7 +7,7 @@ const cheerio = require("cheerio");
 let PORT = 3000;
 
 // Require all models
-//const db = require("./models");
+const db = require("./models");
 
 // Initialize Express
 const app = express();
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to Mongo DB
-mongoose.connect("mongodb://localhost/mongo-scraper", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
 
 
 // Start the sever
