@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT || 3000;
 
 // Require all models
-// const db = require("./models");
+//  const db = require("./models");
 
 // Initialize Express
 const app = express();
