@@ -3,12 +3,14 @@ const path = require("path");
 module.exports = function (app) {
   // Landing page route - loads index.html
   app.get("/", function (req, res) {
-    console.log('Landing Page')
-    res.sendFile(path.join(__dirname, "../public/index.html"))
+    res.render("index", {
+      msg: "Welcome index page"
+    })
   });
 
   app.get("/saved", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/saved.html"))
+    console.log('save page')
+    // res.sendFile(path.join(__dirname, "../public/saved.html"))
   });
 
 };
