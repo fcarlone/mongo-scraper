@@ -9,7 +9,9 @@ module.exports = function (app) {
   });
 
   app.get("/saved", function (req, res) {
-    res.send("saved page")
+    res.render("saved", {
+      msg: "Welcome saved page"
+    })
   });
 
 };

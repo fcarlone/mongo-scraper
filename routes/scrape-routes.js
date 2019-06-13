@@ -47,4 +47,14 @@ module.exports = function (app) {
       });
   });
 
+  // GET route for getting individual Article
+  app.get("/articles/:id", function (req, res) {
+    db.Article.findOne({
+      _id: req.params.id
+    })
+      .then(function (dbArticle) {
+        console.log("individual article", dbArticle)
+        res.json(dbArticle)
+      })
+  })
 };
