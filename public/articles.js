@@ -23,6 +23,15 @@ $(document).on("click", "button", function () {
   $.get(`/articles/${articleId}`)
     .then(function (dbArticle) {
       console.log('Article to be saved', dbArticle)
+      // AJAX call to save article
+      $.ajax({
+        method: "POST",
+        url: "saved",
+        data: dbArticle
+      })
+        .then(function (data) {
+          console.log(data)
+        })
     });
 
 });

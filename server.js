@@ -27,6 +27,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 // Routes
 require("./routes/scrape-routes.js")(app);
 require("./routes/html-routes.js")(app);
+require("./routes/saved-routes.js")(app);
 
 // Start the sever
 app.listen(PORT, function () {

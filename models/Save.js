@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Schema constructor
-let ArticleSchema = new Schema({
+let SaveSchema = new Schema({
   headline: {
     type: String,
     required: true
@@ -16,10 +16,15 @@ let ArticleSchema = new Schema({
   link: {
     type: String,
     required: true
+  },
+  // Link to Note model
+  note: {
+    type: Schema.Types.ObjectId,
+    ref: "Note"
   }
 });
 
 // Create model from above Schema
-const Article = mongoose.model("Article", ArticleSchema);
+const Save = mongoose.model("Save", SaveSchema);
 // Export model
-module.exports = Article;
+module.exports = Save;
