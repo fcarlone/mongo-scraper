@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const exphbs = require("express-handlebars");
 // const axios = require("axios");
 // const cheerio = require("cheerio");
 
@@ -18,6 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Static folder (public)
 app.use(express.static("public"));
+// Set Handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Connect to Mongo DB
 // If deployed, use the deployed database. Otherwise use the local mongoScraper database
