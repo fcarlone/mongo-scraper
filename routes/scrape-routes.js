@@ -16,16 +16,7 @@ module.exports = function (app) {
       const $ = cheerio.load(response.data)
 
       $("article").each(function (i, element) {
-        // const headline = $(element).find("h2").text();
-        // const summary = $(element).find("li").text();
-        // const link = $(element).find("a").attr("href");
-        // results.push({
-        //   headline: headline,
-        //   summary: summary,
-        //   link: link
-        // });
         const result = {};
-
         // Add data to results object
         result.headline = $(this).find("h2").text();
         result.summary = $(this).find("li").text();
@@ -45,5 +36,15 @@ module.exports = function (app) {
     });
   });
 
+  // GET route for getting all Articles from the MongoDB
+  app.get("/articles", function (req, res) {
+    db.Article.find({})
+      .then(function (dbArticle) {
+        res.json(dbArticle);
+      })
+      .catch(function (err) {
+        res.json(err);
+      });
+  });
 
 };

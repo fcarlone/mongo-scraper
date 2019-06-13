@@ -9,8 +9,7 @@ module.exports = function (app) {
   });
 
   app.get("/saved", function (req, res) {
-    console.log('save page')
-    // res.sendFile(path.join(__dirname, "../public/saved.html"))
+    res.send("saved page")
   });
 
 };

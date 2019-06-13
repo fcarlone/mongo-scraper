@@ -1,14 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
-// const axios = require("axios");
-// const cheerio = require("cheerio");
 
 // Port 
 const PORT = process.env.PORT || 3000;
-
-// Require all models
-//  const db = require("./models");
 
 // Initialize Express
 const app = express();
