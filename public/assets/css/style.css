@@ -18,3 +18,25 @@ header,
 .top-nav-collapse {
   background-color: #24355C;
 }
+
+h3 {
+  padding-right: .75rem;
+}
+
+h3,
+.navbar,
+.nav-link {
+  color: white;
+}
+
+.navbar,
+.nav-link:hover {
+  color: rgb(125, 195, 241);
+  background-color: white;
+}
+
+.nav-link-scrape {
+  background-color: red;
+  color: white;
+  padding: .5rem;
+}

@@ -7,8 +7,8 @@ $.getJSON("/saves", function (data) {
       `<div class="article-container">
        <div class="artilcle-headline">
        <h3 data-id="${article._id}"> ${article.headline}
-       <button type="button" class="btn btn-note btn-warning float-right" article-id="${article._id}" data-toggle="modal" data-target="#exampleModal" data-whatever="note">Article Notes</button>
        <button type="button" class="btn btn-delete btn-danger float-right" article-id="${article._id}">Delete Article</button>
+       <button type="button" class="btn btn-note btn-warning float-right" article-id="${article._id}" data-toggle="modal" data-target="#exampleModal" data-whatever="note">Article Notes</button>
        </div>
        <div class="article-summary">
        <h5> ${article.summary} </h5>
@@ -20,6 +20,8 @@ $.getJSON("/saves", function (data) {
   });
 });
 $(document).ready(function () {
+
+  $(".nav-link-scrape").hide();
 
   // Handle delete article on-click event
   $(document).on("click", ".btn-delete", function () {
