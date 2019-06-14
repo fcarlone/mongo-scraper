@@ -1,0 +1,27 @@
+body {
+  background-color: rgb(241, 235, 235);
+}
+
+.article-container h3 {
+  background-color: rgb(125, 195, 241);
+  padding: 1rem;
+  color: white;
+  margin: 1rem;
+}
+
+.article-summary {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+}
+
+.article-container {
+  margin: 1rem;
+  background-color: white;
+
+  border-style: groove;
+}
+
+.btn-danger {
+  margin-right: .75rem;
+}
