@@ -13,7 +13,41 @@
 </head>
 
 <body>
-  <h1>Handlebars Main Page</h1>
+  <header>
+    {{!-- Nav Menu --}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <h3>Mongo Scraper</h3>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/saved">Saved Articles</a>
+      {{!-- <a class="nav-link" href="/articles">Articles API</a> --}}
+      <a class="nav-link" href="/scrape">SCRAPE NEW ARTICLES</a>
+    </nav>
+
+    <h1>Handlebars Main Page</h1>
+    {{!-- Background --}}
+    <div id="intro" class="view">
+      <div class="mask rgba-black-strong">
+        <div class="container-fluid d-flex align-items-center justify-content-center h-100">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-md-10">
+
+              <!-- Heading -->
+              <h2 class="display-4 font-weight-bold pt-5 mb-2">MONGO SCRAPER</h2>
+
+              <!-- Divider -->
+              <hr class="hr-light">
+
+              <!-- Description -->
+              <h4 class="my-4">New York Times Edition</h4>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{!-- Content --}}
   {{{ body }}}
 </body>
 

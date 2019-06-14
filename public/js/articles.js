@@ -3,16 +3,22 @@ $.getJSON("/articles", function (data) {
   data.forEach((article) => {
     console.log('article list', article)
     $("#article").append(
-      `<h3 data-id="${article._id}"> ${article.headline}
-       <button type="button" class="btn btn-success" article-id="${article._id}">Save Article</button>
-       <h5> ${article.summary} 
-       <a href="http://www.nytimes.com${article.link}" target="_blank">View Article</a>`
+      `<div class="article-container">
+        <div class="artilcle-headline">
+        <h3 "data-id="${article._id}"> ${article.headline}
+        <button type="button" class="btn btn-save btn-success float-right" article-id="${article._id}">Save Article</button>
+        </div>
+        <div class="article-summary">
+        <h5> ${article.summary} </h5>
+        <a href="http://www.nytimes.com${article.link}" target="_blank">View Article</a>
+        </div>
+       </div>`
     )
   })
 });
 
 // Handle save article on-click event
-$(document).on("click", "button", function () {
+$(document).on("click", ".btn-save", function () {
   console.log('save article button')
 
   // Get article id
