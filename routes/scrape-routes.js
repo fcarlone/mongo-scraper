@@ -37,8 +37,8 @@ module.exports = function (app) {
             console.log(err);
           });
       });
-      // Send confirmation message
-      res.send("Scrape Complete");
+      // Redirect to homepage
+      res.redirect("/")
     });
   });
 
