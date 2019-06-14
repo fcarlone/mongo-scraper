@@ -45,5 +45,36 @@ module.exports = function (app) {
       });
   });
 
+  // GET route for getting specific saved article and populate it with it's note
+  app.get("/saves/:id", function (req, res) {
+    console.log('save note route')
+    db.Save.findOne({
+      _id: req.params.id
+    })
+      .populate("note")
+      .then(function (dbSave) {
+        res.json(dbSave)
+      })
+      .catch(function (error) {
+        console.log(error)
+        res.send(error)
+      });
+  });
+
+  // POST route for saving
+  app.post("/saves/:id", function (req, res) {
+    db.Note.create(req.body)
+      .then(function (dbNote) {
+        return db.Save.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true })
+      })
+      .then(function (dbSave) {
+        console.log('dbSave note saved', dbSave)
+        res.json(dbSave)
+      })
+      .catch(function (error) {
+        res.json(error)
+      });
+  });
+
 
 }

@@ -34,9 +34,8 @@ $(document).ready(function () {
 
     // Get article id
     let articleId = $(this).attr("article-id")
-    console.log("Article ID", articleId)
 
-    $.get(`/articles/${articleId}`)
+    $.get(`/saves/${articleId}`)
       .then(function (article) {
         console.log('article note', article)
 
@@ -50,19 +49,30 @@ $(document).ready(function () {
         modal.find('.modal-body input').val(recipient)
 
         console.log('recipient', modal)
+
+        $(document).on("click", ".btn-submit", function (event) {
+          console.log('add note')
+          let noteInput = $("#message-text").val().trim();
+          console.log("note input", noteInput)
+
+          // GET method to add note
+          console.log("Article ID for POST method", articleId)
+          $.ajax({
+            method: "POST",
+            url: `/saves/${articleId}`,
+            data: {
+              body: $("#message-text").val().trim()
+            }
+          })
+            .then(function (data) {
+              console.log('note data', data)
+              $("#message-text").empty();
+            })
+        });
+
+
       });
-
   });
-
-  // Handle form on-submit
-  $(document).on("click", ".btn-submit", function (event) {
-    console.log('add note')
-    let noteInput = $("#message-text").val();
-    console.log("note input", noteInput)
-
-
-  })
-
 
 
 });
