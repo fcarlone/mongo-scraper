@@ -8,8 +8,14 @@ const db = require("../models");
 // Routes
 module.exports = function (app) {
 
+
   // GET route to scrape website
   app.get("/scrape", function (req, res) {
+
+    // Remove previous articles before scrape
+    db.Article.remove()
+      .then(console.log('remove all'));
+
     // Website to scrape
     axios.get("https://www.nytimes.com").then(function (response) {
       // Load website into cheerio
