@@ -39,30 +39,32 @@ $(document).ready(function () {
     $.get(`/articles/${articleId}`)
       .then(function (article) {
         console.log('article note', article)
+
+        // Load modal
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+
+        console.log('recipient', modal)
       });
-
-
-    // Load modal
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient = button.data('whatever') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.modal-title').text('New message to ' + recipient)
-    modal.find('.modal-body input').val(recipient)
 
   });
 
-  // $('#exampleModal').on('show.bs.modal', function (event) {
-  //   var button = $(event.relatedTarget) // Button that triggered the modal
-  //   var recipient = button.data('whatever') // Extract info from data-* attributes
-  //   // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  //   // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  //   var modal = $(this)
-  //   modal.find('.modal-title').text('New message to ' + recipient)
-  //   modal.find('.modal-body input').val(recipient)
-  // });
+  // Handle form on-submit
+  $(document).on("click", ".btn-submit", function (event) {
+    console.log('add note')
+    let noteInput = $("#message-text").val();
+    console.log("note input", noteInput)
+
+
+  })
 
 
 
 });
+
+
