@@ -25,3 +25,18 @@ $(document).on("click", ".btn-delete", function () {
       console.log('article deleted', article)
     });
 });
+
+
+// Handle add note on-clicke event
+$(document).on("click", ".btn-note", function () {
+  console.log("add note clicked")
+
+  // Get article id
+  let articleId = $(this).attr("article-id")
+  console.log("Article ID", articleId)
+
+  $.get(`/articles/${articleId}`)
+    .then(function (article) {
+      console.log('article note', article)
+    });
+});

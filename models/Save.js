@@ -17,11 +17,11 @@ let SaveSchema = new Schema({
     type: String,
     required: true
   },
-  // Link to Note model
-  note: {
+  // Link to Note model - array of objects
+  note: [{
     type: Schema.Types.ObjectId,
     ref: "Note"
-  }
+  }]
 });
 
 // Create model from above Schema
