@@ -1,4 +1,3 @@
-console.log('save.js')
 // Grab saved articles as JSON
 $.getJSON("/saves", function (data) {
   data.forEach((article) => {
@@ -15,10 +14,10 @@ $.getJSON("/saves", function (data) {
        <a href="http://www.nytimes.com${article.link}" target="_blank">View Article</a>
        </div>
        </div>`
-
     )
   });
 });
+
 $(document).ready(function () {
 
   $(".nav-link-scrape").hide();
@@ -78,11 +77,8 @@ $(document).ready(function () {
               $("#message-text").empty();
             })
         });
-
-
       });
   });
-
 
 });
 

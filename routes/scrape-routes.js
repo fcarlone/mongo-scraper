@@ -8,12 +8,11 @@ const db = require("../models");
 // Routes
 module.exports = function (app) {
 
-
   // GET route to scrape website
   app.get("/scrape", function (req, res) {
 
     // Remove previous articles before scrape
-    db.Article.remove()
+    db.Article.deleteMany()
       .then(console.log('remove all'));
 
     // Website to scrape
@@ -40,6 +39,7 @@ module.exports = function (app) {
       // Redirect to homepage
       res.redirect("/")
     });
+
   });
 
   // GET route for getting all Articles from the MongoDB

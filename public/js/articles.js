@@ -1,5 +1,8 @@
 // Grab the articles as a json
 $.getJSON("/articles", function (data) {
+  // Invoke Modal with article count
+  $(".modal-body").text(`Added ${data.length} new articles`)
+
   data.forEach((article) => {
     console.log('article list', article)
     $("#article").append(
@@ -14,7 +17,8 @@ $.getJSON("/articles", function (data) {
         </div>
        </div>`
     )
-  })
+  });
+
 });
 
 // Handle save article on-click event
