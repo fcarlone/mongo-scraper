@@ -24,7 +24,8 @@ $(document).ready(function () {
   $(".nav-link-scrape").hide();
 
   // Handle delete article on-click event
-  $(document).on("click", ".btn-delete", function () {
+  $(document).on("click", ".btn-delete", function (event) {
+    event.preventDefault();
     console.log("delete button clicked")
     // Get article id
     let articleId = $(this).attr("article-id")
@@ -34,6 +35,8 @@ $(document).ready(function () {
       .then(function (article) {
         console.log('article deleted', article)
       });
+    // Reload page after article is deleted
+    location.reload();
   });
 
 
