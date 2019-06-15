@@ -66,7 +66,9 @@ module.exports = function (app) {
     console.log('save note req.body', req.body)
     db.Note.create(req.body)
       .then(function (dbNote) {
-        return db.Save.findOneAndUpdate({}, { $push: { note: dbNote._id } }, { new: true })
+        return db.Save.findOneAndUpdate({
+          _id: req.params.id
+        }, { $push: { note: dbNote._id } }, { new: true })
       })
       .then(function (dbSave) {
         console.log('dbSave note saved', dbSave)
