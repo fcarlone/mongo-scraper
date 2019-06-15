@@ -32,7 +32,9 @@ module.exports = function (app) {
           });
       });
       // Send confirmation message
-      res.send("Scrape Complete");
+      res.redirect("/")
+      console.log("Scrape Complete");
+
     });
   });
 
