@@ -46,7 +46,19 @@ $(document).ready(function () {
 
     $.get(`/saves/${articleId}`)
       .then(function (article) {
-        console.log('article note', article)
+
+        console.log('article to save note', article)
+
+        // Display previous notes
+        console.log("Previous Article Notes:", article.note)
+        article.note.forEach((note) => {
+          $(".modal-notes").append(
+            `<div class="note-container">
+             <li note-id"${note._id}">${note.body}
+            </div>`
+          )
+        });
+
 
         // Load modal
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -58,6 +70,7 @@ $(document).ready(function () {
         modal.find('.modal-body input').val(recipient)
 
         console.log('recipient', modal)
+
 
         $(document).on("click", ".btn-submit", function (event) {
           console.log('add note')
@@ -81,6 +94,7 @@ $(document).ready(function () {
 
 
       });
+    $(".modal-notes").empty()
   });
 
 
