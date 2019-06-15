@@ -76,27 +76,35 @@ $(document).ready(function () {
 
 
         $(document).on("click", ".btn-submit", function (event) {
+          event.preventDefault();
           console.log('add note')
           let noteInput = $("#message-text").val().trim();
-          console.log("note input", noteInput)
+          if (noteInput.length === 0) {
+            alert('Add note field cannot be empty');
 
-          // GET method to add note
-          console.log("Article ID for POST method", articleId)
-          $.ajax({
-            method: "POST",
-            url: `/saves/${articleId}`,
-            data: {
-              body: $("#message-text").val().trim()
-            }
-          })
-            .then(function (data) {
-              console.log('note data', data)
-              // Reload page after note is saved
-              location.reload();
+          } else {
+            console.log("note input", noteInput)
+
+            // GET method to add note
+            console.log("Article ID for POST method", articleId)
+            $.ajax({
+              method: "POST",
+              url: `/saves/${articleId}`,
+              data: {
+                body: $("#message-text").val().trim()
+              }
             })
+              .then(function (data) {
+                console.log('note data', data)
+                // Reload page after note is saved
+                location.reload();
+              })
+          }
 
         });
+
       });
+
     $(".modal-notes").empty();
   });
 
