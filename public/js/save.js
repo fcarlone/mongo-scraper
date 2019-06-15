@@ -88,13 +88,13 @@ $(document).ready(function () {
           })
             .then(function (data) {
               console.log('note data', data)
-              $("#message-text").empty();
+              // Reload page after note is saved
+              location.reload();
             })
+
         });
-
-
       });
-    $(".modal-notes").empty()
+    $(".modal-notes").empty();
   });
 
 
