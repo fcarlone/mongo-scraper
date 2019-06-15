@@ -81,7 +81,7 @@ $(document).ready(function () {
           let noteInput = $("#message-text").val().trim();
           if (noteInput.length === 0) {
             alert('Add note field cannot be empty');
-
+            location.reload();
           } else {
             console.log("note input", noteInput)
 
