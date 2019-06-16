@@ -5,7 +5,7 @@ $.getJSON("/saves", function (data) {
   console.log("saved article count", data.length)
   if (data.length === 0) {
     $("#no-saved-articles-container").append(
-      `<h3 id="no-saved-article">Currently No Saved Articles</h3>`
+      `<h3 id="no-saved-article">No Saved Articles</h3>`
     )
   };
 
