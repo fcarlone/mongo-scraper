@@ -19,96 +19,105 @@ $.getJSON("/saves", function (data) {
     )
   });
 });
-$(document).ready(function () {
+// $(document).ready(function () {
 
-  $(".nav-link-scrape").hide();
+$(".nav-link-scrape").hide();
 
-  // Handle delete article on-click event
-  $(document).on("click", ".btn-delete", function (event) {
-    event.preventDefault();
-    console.log("delete button clicked")
-    // Get article id
-    let articleId = $(this).attr("article-id")
-    console.log("Article ID", articleId)
+// Handle delete article on-click event
+$(document).on("click", ".btn-delete", function (event) {
+  event.preventDefault();
+  console.log("delete button clicked")
+  // Get article id
+  let articleId = $(this).attr("article-id")
+  console.log("Article ID", articleId)
 
-    $.get(`/delete/${articleId}`)
-      .then(function (article) {
-        console.log('article deleted', article)
-      });
-    // Reload page after article is deleted
-    location.reload();
-  });
+  $.get(`/delete/${articleId}`)
+    .then(function (article) {
+      console.log('article deleted', article)
+    });
+  // Reload page after article is deleted
+  // location.reload();
+});
 
 
-  // Handle add note on-clicke event
-  $(document).on("click", ".btn-note", function (event) {
-    console.log("add note clicked")
+// Handle add note on-clicke event
+$(document).on("click", ".btn-note", function (event) {
+  console.log("add note clicked")
+  // Get article id
+  let articleId = $(this).attr("article-id")
 
-    // Get article id
-    let articleId = $(this).attr("article-id")
+  $.get(`/saves/${articleId}`)
+    .then(function (article) {
 
-    $.get(`/saves/${articleId}`)
-      .then(function (article) {
+      console.log('article to save note', article)
 
-        console.log('article to save note', article)
-
-        // Display previous notes
-        console.log("Previous Article Notes:", article.note)
-        article.note.forEach((note) => {
-          $(".modal-notes").append(
-            `<div class="note-container">
-             <li note-id"${note._id}">${note.body}
+      // Display previous notes
+      console.log("Previous Article Notes:", article.note)
+      article.note.forEach((note) => {
+        $(".modal-notes").append(
+          `<div class="note-container">
+             <li>${note.body}
+             <button class="btn-danger delete-note" data-note="${note._id}">X</button>
+             </li>
             </div>`
-          )
-        });
+        )
+      });
+
+      // window.onbeforeunload = function () {
+      //   return "you can not refresh the page";
+      // }
+      // Load modal
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var recipient = button.data('whatever') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      modal.find('.modal-title').text('New message to ' + recipient)
+      modal.find('.modal-body input').val(recipient)
+
+      console.log('recipient', modal)
 
 
-        // Load modal
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
+      $(document).on("click", ".btn-submit", function (event) {
+        event.preventDefault();
+        console.log('add note')
+        let noteInput = $("#message-text").val().trim();
+        if (noteInput.length === 0) {
+          alert('Add note field cannot be empty');
+          // location.reload();
+        } else {
+          console.log("note input", noteInput)
 
-        console.log('recipient', modal)
-
-
-        $(document).on("click", ".btn-submit", function (event) {
-          event.preventDefault();
-          console.log('add note')
-          let noteInput = $("#message-text").val().trim();
-          if (noteInput.length === 0) {
-            alert('Add note field cannot be empty');
-            location.reload();
-          } else {
-            console.log("note input", noteInput)
-
-            // GET method to add note
-            console.log("Article ID for POST method", articleId)
-            $.ajax({
-              method: "POST",
-              url: `/saves/${articleId}`,
-              data: {
-                body: $("#message-text").val().trim()
-              }
+          // GET method to add note
+          console.log("Article ID for POST method", articleId)
+          $.ajax({
+            method: "POST",
+            url: `/saves/${articleId}`,
+            data: {
+              body: $("#message-text").val().trim()
+            }
+          })
+            .then(function (data) {
+              console.log('note data', data)
+              // Reload page after note is saved
+              // location.reload();
             })
-              .then(function (data) {
-                console.log('note data', data)
-                // Reload page after note is saved
-                location.reload();
-              })
-          }
-
-        });
+        }
 
       });
 
-    $(".modal-notes").empty();
-  });
+    });
 
+  $(".modal-notes").empty();
+});
 
+// });
+
+$(document).on("click", ".delete-note", function (event) {
+  event.preventDefault()
+  console.log("delete note button clicked")
+  let deleteNote = $(this).attr("data-note")
+  console.log(deleteNote);
 });
 
 
