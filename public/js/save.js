@@ -53,21 +53,17 @@ $(document).ready(function () {
           $(".modal-notes").append(
             `<div class="note-container">
              <li>${note.body}
-             <button class="btn-danger delete-note float-right" data-note="${note._id}">X</button>
+             <button class="btn-danger delete-note float-right" data-note="${note._id}"><i class="fa fa-trash"></i></button>
+           
              </li>
             </div>`
           )
         });
 
-        // window.onbeforeunload = function () {
-        //   return "you can not refresh the page";
-        // }
         // Load modal
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var recipient = button.data('whatever') // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
+        const button = $(event.relatedTarget)
+        const recipient = button.data('note')
+        const modal = $(this)
         modal.find('.modal-title').text('New message to ' + recipient)
         modal.find('.modal-body input').val(recipient)
 
