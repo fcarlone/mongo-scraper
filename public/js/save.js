@@ -31,12 +31,12 @@ $(document).on("click", ".btn-delete", function (event) {
   let articleId = $(this).attr("article-id")
   console.log("Article ID", articleId)
 
-  $.get(`/delete/${articleId}`)
+  $.post(`/delete/${articleId}`)
     .then(function (article) {
       console.log('article deleted', article)
     });
   // Reload page after article is deleted
-  // location.reload();
+  location.reload();
 });
 
 
@@ -84,7 +84,7 @@ $(document).on("click", ".btn-note", function (event) {
         let noteInput = $("#message-text").val().trim();
         if (noteInput.length === 0) {
           alert('Add note field cannot be empty');
-          // location.reload();
+          location.reload();
         } else {
           console.log("note input", noteInput)
 
@@ -100,7 +100,7 @@ $(document).on("click", ".btn-note", function (event) {
             .then(function (data) {
               console.log('note data', data)
               // Reload page after note is saved
-              // location.reload();
+              location.reload();
             })
         }
 
@@ -116,8 +116,15 @@ $(document).on("click", ".btn-note", function (event) {
 $(document).on("click", ".delete-note", function (event) {
   event.preventDefault()
   console.log("delete note button clicked")
-  let deleteNote = $(this).attr("data-note")
-  console.log(deleteNote);
+  let noteId = $(this).attr("data-note")
+  console.log(noteId);
+
+  // Delete note
+  $.get(`/saves/${noteId}`)
+    .then(function (note) {
+      console.log('note deleted', note)
+    });
+
 });
 
 

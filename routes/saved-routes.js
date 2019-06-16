@@ -1,4 +1,3 @@
-
 // Require all models
 const db = require("../models");
 
@@ -30,8 +29,8 @@ module.exports = function (app) {
   });
 
   // GET route to delete article from MongoDB
-  app.get("/delete/:id", function (req, res) {
-    db.Save.remove({
+  app.post("/delete/:id", function (req, res) {
+    db.Save.deleteOne({
       _id: req.params.id
     },
       function (error, removed) {
@@ -39,7 +38,7 @@ module.exports = function (app) {
           console.log(error)
           res.send(error)
         } else {
-          console.log("removed from MongoDB", removed)
+          console.log("Note removed from MongoDB", removed)
           res.send(removed)
         }
       });
@@ -61,7 +60,7 @@ module.exports = function (app) {
       });
   });
 
-  // POST route for saving
+  // POST route for saving a note to an article
   app.post("/saves/:id", function (req, res) {
     console.log('save note req.body', req.body)
     db.Note.create(req.body)
@@ -79,6 +78,35 @@ module.exports = function (app) {
       });
   });
 
+  // POST route to delete note
+  app.get(`deleteNote/:id`, function (req, res) {
+    console.log('delete note', req.body);
+    let id = req.params.id;
+    db.Note.findOneAndDelete({
+      _id: id
+    }, function (error, removed) {
+      if (error) {
+        console.log(error)
+        res.send(error)
+      } else {
+        console.log("Note removed from MongoDB", removed)
+        res.send(removed)
+      }
+      db.Save.update(
+        { note: id },
+        { "$pull": { "note": id } },
 
+        function (error, removed) {
+          if (error) {
+            console.log(error)
+            res.send(error)
+          } else {
+            console.log("Note removed from MongoDB", removed)
+            res.send(removed)
+          }
+        }
+      );
+    });
+  });
 
 }
