@@ -1,7 +1,8 @@
 // Grab the articles as a json
 $.getJSON("/articles", function (data) {
   // Display modal with article count
-  $(".modal-body").text(`Added ${data.length} new articles`)
+  $(".modal-body").append(`<h4>Mongo Scraper</h4>
+  <h4>scraped ${data.length} articles</h4>`)
 
   data.forEach((article) => {
     console.log('article list', article)
