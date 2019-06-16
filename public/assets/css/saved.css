@@ -35,3 +35,11 @@ li {
 .delete-note {
   border-radius: 8px;
 }
+
+#no-saved-article {
+  background-color: orange;
+  padding: 1rem;
+  color: white;
+  margin: 1rem;
+  text-align: center;
+}

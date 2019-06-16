@@ -1,6 +1,14 @@
 console.log('save.js')
 // Grab saved articles as JSON
 $.getJSON("/saves", function (data) {
+  // Saved article count
+  console.log("saved article count", data.length)
+  if (data.length === 0) {
+    $("#no-saved-articles-container").append(
+      `<h3 id="no-saved-article">Currently No Saved Articles</h3>`
+    )
+  };
+
   data.forEach((article) => {
     console.log('saved article', article)
     $("#saved-article").append(
@@ -54,7 +62,6 @@ $(document).ready(function () {
             `<div class="note-container">
              <li>${note.body}
              <button class="btn-danger delete-note float-right" data-note="${note._id}"><i class="fa fa-trash"></i></button>
-           
              </li>
             </div>`
           )
@@ -79,7 +86,7 @@ $(document).ready(function () {
           } else {
             console.log("note input", noteInput)
 
-            // GET method to add note
+            // POST method to add note
             console.log("Article ID for POST method", articleId)
             $.ajax({
               method: "POST",
