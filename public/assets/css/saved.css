@@ -25,3 +25,13 @@ body {
 .btn-warning {
   margin-right: .75rem;
 }
+
+li {
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-bottom: 10px;
+}
+
+.delete-note {
+  border-radius: 8px;
+}

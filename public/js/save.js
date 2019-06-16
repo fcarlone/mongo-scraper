@@ -15,7 +15,6 @@ $.getJSON("/saves", function (data) {
        <a href="http://www.nytimes.com${article.link}" target="_blank">View Article</a>
        </div>
        </div>`
-
     )
   });
 });
@@ -39,7 +38,6 @@ $(document).ready(function () {
     location.reload();
   });
 
-
   // Handle add note on-clicke event
   $(document).on("click", ".btn-note", function (event) {
     console.log("add note clicked")
@@ -48,16 +46,14 @@ $(document).ready(function () {
 
     $.get(`/saves/${articleId}`)
       .then(function (article) {
-
         console.log('article to save note', article)
-
         // Display previous notes
         console.log("Previous Article Notes:", article.note)
         article.note.forEach((note) => {
           $(".modal-notes").append(
             `<div class="note-container">
              <li>${note.body}
-             <button class="btn-danger delete-note" data-note="${note._id}">X</button>
+             <button class="btn-danger delete-note float-right" data-note="${note._id}">X</button>
              </li>
             </div>`
           )
@@ -76,7 +72,6 @@ $(document).ready(function () {
         modal.find('.modal-body input').val(recipient)
 
         console.log('recipient', modal)
-
 
         $(document).on("click", ".btn-submit", function (event) {
           event.preventDefault();
@@ -103,11 +98,8 @@ $(document).ready(function () {
                 location.reload();
               })
           }
-
         });
-
       });
-
     $(".modal-notes").empty();
   });
   $(document).on("click", ".delete-note", function (event) {
@@ -124,7 +116,6 @@ $(document).ready(function () {
     // Reload page after note is saved
     location.reload();
   });
-
 
 });
 
