@@ -80,7 +80,6 @@ module.exports = function (app) {
 
   // POST route to delete note
   app.post("/delete-note/:id", function (req, res) {
-    console.log('delete note', req.body);
     let id = req.params.id;
     db.Note.findOneAndDelete({
       _id: id
@@ -93,7 +92,6 @@ module.exports = function (app) {
         res.send(removed)
       }
       db.Save.updateOne(
-        { note: id },
         { "$pull": { "note": id } },
         function (error) {
           if (error) {

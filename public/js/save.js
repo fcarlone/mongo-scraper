@@ -121,7 +121,8 @@ $(document).ready(function () {
       .then(function (note) {
         console.log('note deleted', note)
       });
-
+    // Reload page after note is saved
+    location.reload();
   });
 
 
