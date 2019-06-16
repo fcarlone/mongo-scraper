@@ -79,7 +79,7 @@ module.exports = function (app) {
   });
 
   // POST route to delete note
-  app.get(`deleteNote/:id`, function (req, res) {
+  app.post("/delete-note/:id", function (req, res) {
     console.log('delete note', req.body);
     let id = req.params.id;
     db.Note.findOneAndDelete({
@@ -92,17 +92,13 @@ module.exports = function (app) {
         console.log("Note removed from MongoDB", removed)
         res.send(removed)
       }
-      db.Save.update(
+      db.Save.updateOne(
         { note: id },
         { "$pull": { "note": id } },
-
-        function (error, removed) {
+        function (error) {
           if (error) {
             console.log(error)
             res.send(error)
-          } else {
-            console.log("Note removed from MongoDB", removed)
-            res.send(removed)
           }
         }
       );
