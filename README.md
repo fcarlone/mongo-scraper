@@ -11,7 +11,7 @@ When you just want the major headlines from the New York Times webiste - Mongo-s
 ### Software/libraries used for this application:
 Node.js - used for developing the server-side of the application  
 Express.js - used for building the web application and handle HTTP requests  
-MongoDB - a cross-platform document-oriented database program - classified as a NoSQL database program
+MongoDB - a cross-platform document-oriented database program - classified as a NoSQL database program  
 JavaScript - for the applications logic  
 Bootstrap - for structuring the user questions and making the application responsive  
 jQuery - for HTML/DOM manipulation  
