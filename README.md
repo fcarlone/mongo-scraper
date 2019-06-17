@@ -23,3 +23,5 @@ Cheerio - a tool to parse a website's markup language
 The application is deployed using the Heroku cloud platform.  You can visit the site at:  
 [https://fcarlone-mongo-scraper.herokuapp.com/](https://fcarlone-mongo-scraper.herokuapp.com/)
 
+### Video Demo: 
+[![Watch the video](public/assets/img/screenshot.png)](https://drive.google.com/file/d/1wvmWVQ2hUjxdiNt-Yzo2aI6X7NJCBGIK/view)
