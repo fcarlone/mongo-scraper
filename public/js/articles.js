@@ -44,8 +44,8 @@ $(document).on("click", ".btn-save", function () {
           // console.log(data)
           $(".modal-body").html(`<h4>Article Saved</h4><h5>${dbArticle.headline}</h5>`);
         })
-
     });
+
   $(document).on("click", ".btn-secondary", function () {
     console.log('test')
     location.reload()
