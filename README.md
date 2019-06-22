@@ -13,7 +13,7 @@ Node.js - used for developing the server-side of the application
 Express.js - used for building the web application and handle HTTP requests  
 MongoDB - a cross-platform document-oriented database program - classified as a NoSQL database program  
 JavaScript - for the applications logic  
-Bootstrap - for structuring the user questions and making the application responsive  
+Bootstrap - front-end framework used to create modern websites and making the application responsive  
 jQuery - for HTML/DOM manipulation  
 Handlebars - to generate the HTML
 Cheerio - a tool to parse a website's markup language
