@@ -6,7 +6,7 @@
 This application was designed following the Model–View–Controller (MVC) framework - an architectural pattern that organize the application's code based on its purpose.  A database management system (DBMS) was used to access and update the database.  
 
 ### Application Instructions:  
-When you just want the major headlines from the New York Times website - Mongo-scraper will extract the main articles and list them in an easy to read format.  You also have the option to save the article and add notes to a saved article.
+When you just want the major headlines from the New York Times website - Mongo-scraper will extract the main articles and list them in an easy to read format.  You also have the option to save the article and add notes to the article.
 
 ### Software/libraries used for this application:
 Node.js - used for developing the server-side of the application  
