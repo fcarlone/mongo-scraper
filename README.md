@@ -12,7 +12,7 @@ When you just want the major headlines from the New York Times website - Mongo-s
 Node.js - used for developing the server-side of the application  
 Express.js - used for building the web application and handle HTTP requests  
 MongoDB - a cross-platform document-oriented database program - classified as a NoSQL database program  
-JavaScript - for the applications logic  
+JavaScript - for application logic  
 Bootstrap - front-end framework used to create modern websites and making the application responsive  
 jQuery - for HTML/DOM manipulation  
 Handlebars - to generate the HTML
